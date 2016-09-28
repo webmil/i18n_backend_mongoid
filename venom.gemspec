@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'venom/version'
+require 'venomi/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "venom"
-  spec.version       = Venom::VERSION
+  spec.name          = "venomi"
+  spec.version       = Venomi::VERSION
   spec.authors       = ["Alexandr Turchyn"]
   spec.email         = ["lexfox777@gmail.com"]
 
   spec.summary       = 'United I18n backend simple with mongoid provider.'
   spec.description   = 'United I18n backend simple with mongoid provider and adds translation functionality to Rails Admin.'
-  spec.homepage      = "https://github.com/AlexandrToorchyn/venom"
+  spec.homepage      = "https://github.com/AlexandrToorchyn/venomi"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

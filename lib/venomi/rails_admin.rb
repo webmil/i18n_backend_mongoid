@@ -3,7 +3,7 @@ require 'fileutils'
 require 'tempfile'
 include FileUtils
 
-module Venom
+module Venomi
   module RailsAdmin
 
     if defined? ::Rails

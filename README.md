@@ -1,4 +1,4 @@
-# Venom
+# Venomi
 
 United I18n backend simple with mongoid provider and adds translation functionality to Rails Admin.
 
@@ -14,7 +14,7 @@ gem 'rails_admin'
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'venom'
+gem 'venomi'
 ```
 
 And then execute:
@@ -23,19 +23,19 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install venom
+    $ gem install venomi
 
 ## Usage
 
-    rails g venom:install
+    rails g venomi:install
 
 ## Uninstall
 
-    rails d venom:install
+    rails d venomi:install
 
 ## Contributing
 
-    1. Fork it ( https://github.com/AlexandrToorchyn/venom/fork )
+    1. Fork it ( https://github.com/AlexandrToorchyn/venomi/fork )
     2. Create your feature branch (`git checkout -b my-new-feature`)
     3. Commit your changes (`git commit -am 'Add some feature'`)
     4. Push to the branch (`git push origin my-new-feature`)

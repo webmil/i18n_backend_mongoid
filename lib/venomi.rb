@@ -1,4 +1,4 @@
-module Venom
+module Venomi
 end
 
 begin
@@ -7,4 +7,4 @@ rescue LoadError
   #do nothing
 end
 
-require "venom/version"
+require "venomi/version"

@@ -1,8 +1,8 @@
 require "spec_helper"
 
-describe Venom do
+describe Venomi do
   it "has a version number" do
-    expect(Venom::VERSION).not_to be nil
+    expect(Venomi::VERSION).not_to be nil
   end
 
   it "does something useful" do

@@ -1,12 +1,12 @@
 require 'rails/generators/base'
-require 'venom/rails_admin'
+require 'venomi/rails_admin'
 
-module Venom
+module Venomi
   module Generators
     class InstallGenerator < Rails::Generators::Base
       source_root File.expand_path("../../templates", __FILE__)
 
-      desc 'Venom installation generator'
+      desc 'Venomi installation generator'
 
       def copy_initializer
         template "translation.rb", "app/models/translation.rb"
@@ -17,9 +17,9 @@ module Venom
       def install
         case self.behavior
           when :invoke
-            Venom::RailsAdmin.configure
+            Venomi::RailsAdmin.configure
           when :revoke
-            Venom::RailsAdmin.rollback
+            Venomi::RailsAdmin.rollback
           end
       end
 
