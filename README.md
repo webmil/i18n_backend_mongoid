@@ -28,11 +28,11 @@ Or install it yourself as:
 
 ## Usage
 
-    rails g venomi:install
+    rails g venomi:install TRANSLATION_TABLE_NAME
 
 ## Uninstall
 
-    rails d venomi:install
+    rails d venomi:install TRANSLATION_TABLE_NAME
 
 ## Contributing
 
