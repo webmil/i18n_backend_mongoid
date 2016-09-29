@@ -5,6 +5,7 @@ United I18n backend simple with mongoid provider and adds translation functional
 ## Dependency
 
 ```ruby
+gem 'rails-i18n'
 gem 'mongoid'
 gem 'rails_admin'
 ```
