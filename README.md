@@ -1,6 +1,6 @@
 # i18n_backend_mongoid
 
-United I18n backend simple with mongoid provider and adds translation functionality to Rails Admin.
+Store I18n translations in MongoDB
 
 ## Dependency
 
