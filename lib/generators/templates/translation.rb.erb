@@ -1,15 +1,6 @@
 class <%= table_name %>
   include Mongoid::Document
+  include I18nBackendMongoid::Translateble
 
-  after_save do
-    I18n.backend.reload!
-  end
-
-  store_in collection: "i18n"
-  # scope :default, ->{ order_by(locale: :asc, key: :asc) }
-
-  field :key, type: String
-  field :value, type: String, localize: true
-
-  validates :key, presence: true, uniqueness: true
+  store_in collection: 'i18n'
 end

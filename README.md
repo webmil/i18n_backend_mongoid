@@ -1,4 +1,4 @@
-# Venomi
+# i18n_backend_mongoid
 
 United I18n backend simple with mongoid provider and adds translation functionality to Rails Admin.
 
@@ -7,7 +7,6 @@ United I18n backend simple with mongoid provider and adds translation functional
 ```ruby
 gem 'rails-i18n'
 gem 'mongoid'
-gem 'rails_admin'
 ```
 
 ## Installation
@@ -15,7 +14,7 @@ gem 'rails_admin'
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'venomi'
+gem 'i18n_backend_mongoid'
 ```
 
 And then execute:
@@ -24,19 +23,19 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install venomi
+    $ gem install i18n_backend_mongoid
 
 ## Usage
 
-    rails g venomi:install TRANSLATION_TABLE_NAME
+    rails g i18n_backend_mongoid:install TRANSLATION_TABLE_NAME
 
 ## Uninstall
 
-    rails d venomi:install TRANSLATION_TABLE_NAME
+    rails d i18n_backend_mongoid:install TRANSLATION_TABLE_NAME
 
 ## Contributing
 
-    1. Fork it ( https://github.com/AlexandrToorchyn/venomi/fork )
+    1. Fork it ( https://github.com/webmil/i18n_backend_mongoid/fork )
     2. Create your feature branch (`git checkout -b my-new-feature`)
     3. Commit your changes (`git commit -am 'Add some feature'`)
     4. Push to the branch (`git push origin my-new-feature`)
