@@ -28,11 +28,7 @@ module I18n
         end
 
         def available_locales
-          init_translations unless initialized?
-          translations.inject([]) do |locales, (locale, data)|
-            locales << locale unless (data.keys - [:i18n]).empty?
-            locales
-          end
+          Rails.application.config.i18n.available_locales
         end
 
         # Clean up translations hash and set initialized to false on reload!
