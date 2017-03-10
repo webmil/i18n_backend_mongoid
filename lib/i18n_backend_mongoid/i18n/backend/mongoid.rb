@@ -27,7 +27,6 @@ module I18n
           translations[locale].deep_merge!(data)
         end
 
-        # Get available locales from the translations hash
         def available_locales
           init_translations unless initialized?
           translations.inject([]) do |locales, (locale, data)|
@@ -53,7 +52,7 @@ module I18n
         def load_translations
           @translations = {}
           @model.all.each do |record|
-            I18n.available_locales.each do |loc|
+            I18n.config.available_locales.each do |loc|
               next unless record.value_translations.key?(loc)
               k = I18n.normalize_keys(loc, record.key, [])
               k.shift
