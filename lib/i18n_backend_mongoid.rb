@@ -11,3 +11,4 @@ rescue LoadError
 end
 
 require 'i18n_backend_mongoid/version'
+require 'i18n_backend_mongoid/railtie' if defined?(Rails)
