@@ -14,10 +14,10 @@ namespace :translations do
   end
 
   desc "merge task"
-  task merge: :environment do
-    I18n.locale = :uk
+  task :merge, [:lang] => [:environment] do |t, args|
+    I18n.locale = args[:lang].to_sym
     model = translation_model
-    get_flatten_hash_for('uk').each do |key, val|
+    get_flatten_hash_for(args[:lang]).each do |key, val|
       if model.where(key: key).count == 0
         p key
         model.create(key: key, value: val)
