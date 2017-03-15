@@ -17,7 +17,6 @@ namespace :translations do
   task merge: :environment do
     I18n.locale = :uk
     model = translation_model
-    byebug
     get_flatten_hash_for('uk').each do |key, val|
       if model.where(key: key).count == 0
         p key

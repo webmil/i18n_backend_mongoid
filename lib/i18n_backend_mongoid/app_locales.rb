@@ -31,10 +31,10 @@ module AppLocales
   end
 
   def translation_model
-    if I18n.backend.class == I18n::Backend::Mongoid
+    if I18n.backend.is_a? I18n::Backend::Mongoid
       I18n.backend.model
-    elsif I18n.backend.class == I18n::Backend::Chain
-      I18n.backend.backends.find {|b| b.class == I18n::Backend::Mongoid }.model
+    elsif I18n.backend.is_a? I18n::Backend::Chain
+      I18n.backend.backends.find {|b| b.is_a? I18n::Backend::Mongoid }.model
     end
   end
 end
