@@ -2,6 +2,7 @@ module AppLocalesHelper
   class TranslationClassLostError < StandardError; end
 
   def get_flatten_hash_for(lang)
+    lang = lang.to_s
     locale = {}
     app_locales_paths.each do |files_path|
       hash = YAML.load_file(files_path)
@@ -56,7 +57,7 @@ module AppLocalesHelper
   end
 
   def valid_locale?(locale)
-    if I18n.available_locales.include?(locale.to_sym)
+    if I18n.available_locales.include?(locale)
       true
     else
       puts %Q[ "#{locale}" is not valid locale. ]
