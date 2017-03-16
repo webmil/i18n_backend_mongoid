@@ -1,4 +1,4 @@
-module AppLocales
+module AppLocalesHelper
 
   def get_flatten_hash_for(lang)
     locale = {}
@@ -31,10 +31,34 @@ module AppLocales
   end
 
   def translation_model
+    model = nil
+    exeption_msg = 'Something went wrong. Cant find I18n mongoid backend'
+
     if I18n.backend.is_a? I18n::Backend::Mongoid
-      I18n.backend.model
+      model = I18n.backend.model
     elsif I18n.backend.is_a? I18n::Backend::Chain
-      I18n.backend.backends.find {|b| b.is_a? I18n::Backend::Mongoid }.model
+      model = I18n.backend.backends.find{ |b| b.is_a? I18n::Backend::Mongoid }.model
+    end
+    raise exeption_msg if model.nil?
+    model
+  end
+
+  def confirm(msg)
+    print msg
+    print 'Are you sure? (yes or no) '
+    confirm = STDIN.gets.chomp
+    if confirm.present? && confirm == 'yes'
+      true
+    else
+      puts 'You canceled this action'
+    end
+  end
+
+  def valid_locale?(locale)
+    if I18n.available_locales.include?(locale.to_sym)
+      true
+    else
+      puts %Q[ "#{locale}" is not valid locale. ]
     end
   end
 end

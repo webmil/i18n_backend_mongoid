@@ -1,9 +1,12 @@
-require 'i18n_backend_mongoid/app_locales'
-include AppLocales
+require 'i18n_backend_mongoid/app_locales_helper'
+include AppLocalesHelper
 namespace :translations do
   desc "TODO"
   task :to_db, [:lang] => [:environment] do |t, args|
+    next unless valid_locale?(args[:lang])
     model = translation_model
+    msg = "This action will drop collection from #{model.to_s}. "
+    next unless confirm(msg)
     I18n.locale = args[:lang].to_sym
     model.collection.drop
 
@@ -14,6 +17,7 @@ namespace :translations do
 
   desc "merge task"
   task :merge, [:lang] => [:environment] do |t, args|
+    next unless valid_locale?(args[:lang])
 
     I18n.locale = args[:lang].to_sym
     model = translation_model
