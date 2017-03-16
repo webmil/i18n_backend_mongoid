@@ -52,7 +52,7 @@ module AppLocalesHelper
     if confirm.present? && confirm == 'yes'
       true
     else
-      puts 'You canceled this action'
+      puts 'You canceled this action.'
     end
   end
 
@@ -62,5 +62,10 @@ module AppLocalesHelper
     else
       puts %Q[ "#{locale}" is not valid locale. ]
     end
+  end
+
+  def get_locale (args)
+    locale = args[:lang] || I18n.default_locale
+    locale.to_sym
   end
 end

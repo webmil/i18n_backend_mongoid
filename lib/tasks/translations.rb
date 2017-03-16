@@ -4,12 +4,11 @@ include AppLocalesHelper
 namespace :translations do
   desc "TODO"
   task :to_db, [:lang] => [:environment] do |t, args|
-    locale = args[:lang] || I18n.default_locale
-    locale = locale.to_sym
+    locale = get_locale(args)
     next unless valid_locale?(locale)
     begin
       model = translation_model
-      msg = "This action will drop collection from #{model.to_s}. "
+      msg = "This action will drop collection for #{model.to_s} model. "
       next unless confirm(msg)
       I18n.locale = locale
       model.collection.drop
@@ -24,13 +23,10 @@ namespace :translations do
 
   desc "merge task"
   task :merge, [:lang] => [:environment] do |t, args|
-    locale = args[:lang] || I18n.default_locale
-    locale = locale.to_sym
-    next unless valid_locale?(locale)
+    locale = get_locale(args)
     begin
       I18n.locale = locale
       model = translation_model
-
       get_flatten_hash_for(locale).each do |key, val|
         if model.where(key: key).count == 0
           p key
