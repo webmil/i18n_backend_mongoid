@@ -31,16 +31,17 @@ module AppLocalesHelper
   end
 
   def translation_model
-    model = nil
-    exeption_msg = 'Something went wrong. Cant find I18n mongoid backend'
+    nil_exeption_message = "Something went wrong. Can't find I18n mongoid backend"
 
     if I18n.backend.is_a? I18n::Backend::Mongoid
-      model = I18n.backend.model
+       I18n.backend.model
     elsif I18n.backend.is_a? I18n::Backend::Chain
-      model = I18n.backend.backends.find{ |b| b.is_a? I18n::Backend::Mongoid }.model
+       I18n.backend.backends.find{ |b| b.is_a? I18n::Backend::Mongoid }.model
+    else
+     raise nil_exeption_message
     end
-    raise exeption_msg if model.nil?
-    model
+  rescue NoMethodError
+    puts "Can't find translation class"
   end
 
   def confirm(msg)
