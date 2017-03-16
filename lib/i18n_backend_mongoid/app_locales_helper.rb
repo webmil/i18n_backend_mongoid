@@ -1,4 +1,5 @@
 module AppLocalesHelper
+  class TranslationClassLostError < StandardError; end
 
   def get_flatten_hash_for(lang)
     locale = {}
@@ -32,7 +33,6 @@ module AppLocalesHelper
 
   def translation_model
     nil_exeption_message = "Something went wrong. Can't find I18n mongoid backend"
-
     if I18n.backend.is_a? I18n::Backend::Mongoid
        I18n.backend.model
     elsif I18n.backend.is_a? I18n::Backend::Chain
@@ -41,7 +41,7 @@ module AppLocalesHelper
      raise nil_exeption_message
     end
   rescue NoMethodError
-    puts "Can't find translation class"
+    raise TranslationClassLostError, "Can't find translation class"
   end
 
   def confirm(msg)
