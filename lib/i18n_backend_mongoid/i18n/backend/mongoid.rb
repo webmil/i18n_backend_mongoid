@@ -4,16 +4,11 @@ module I18n
   module Backend
     class Mongoid
       module Implementation
-        attr_accessor :model
         include Base, Flatten
 
         def initialize(model)
           @model = model
-          init_translations
-        end
-
-        def initialized?
-          @initialized ||= false
+          @translation_loaded = false
         end
 
         # Stores translations for the given locale in memory.
@@ -33,20 +28,13 @@ module I18n
 
         # Clean up translations hash and set initialized to false on reload!
         def reload!
-          @initialized = false
-          @translations = nil
-          init_translations
+          @translation_loaded = false
+          @translations = {}
         end
 
         protected
 
-        def init_translations
-          load_translations
-          @initialized = true
-        end
-
         def load_translations
-          @translations = {}
           @model.all.each do |record|
             I18n.config.available_locales.each do |loc|
               next unless record.value_translations.key?(loc)
@@ -55,6 +43,7 @@ module I18n
               store_translations(loc, k.reverse.inject(record.value_translations[loc]) { |a, n| { n => a } })
             end
           end
+          @translation_loaded = true
         end
 
         def translations
@@ -67,7 +56,8 @@ module I18n
         # into multiple keys, i.e. <tt>currency.format</tt> is regarded the same as
         # <tt>%w(currency format)</tt>.
         def lookup(locale, key, scope = [], options = {})
-          init_translations unless initialized?
+          load_translations unless @translation_loaded
+
           keys = I18n.normalize_keys(locale, key, scope, options[:separator])
 
           keys.inject(translations) do |result, k|
