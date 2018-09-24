@@ -5,6 +5,7 @@ module I18n
     class Mongoid
       module Implementation
         include Base, Flatten
+        attr_accessor :model
 
         def initialize(model)
           @model = model
