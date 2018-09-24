@@ -29,6 +29,16 @@ Or install it yourself as:
 
     rails g i18n_backend_mongoid:install TRANSLATION_TABLE_NAME
 
+## Clean translations db and load data from yaml to it
+
+    rails translations:merge[en]
+
+
+## Merges translations from yaml to db
+
+    rails translations:to_db[en]
+
+
 ## Uninstall
 
     rails d i18n_backend_mongoid:install TRANSLATION_TABLE_NAME
