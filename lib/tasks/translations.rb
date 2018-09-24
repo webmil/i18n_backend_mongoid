@@ -28,10 +28,9 @@ namespace :translations do
       I18n.locale = locale
       model = translation_model
       get_flatten_hash_for(locale).each do |key, val|
-        if model.where(key: key).count == 0
-          p key
-          model.create(key: key, value: val)
-        end
+        p "#{key} => #{val}"
+
+        model.find_or_initialize_by(key: key).update(value: val)
       end
     rescue TranslationClassLostError => e
       abort e.message
